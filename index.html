@@ -1,19 +1,55 @@
----
-layout: main
----
-{% for post in paginator.posts %}
-<article class="post">
-  {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
-  {% else %}
-  {% endif %}
-  <div class="post-content">
-    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
-    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
-  </div>
-</article>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mikhail Savochkin's Homepage</title>
+    </head>
+    <body>
+        <h1>Mikhail Savochkin</h1>
+        <p>
+            I'm a 32 years old software engineer located in Bishkek, Kyrgyzstan.<br />
+            I'm passionate about Linux, Networks, Security, Video Games, Motorcycles and Photography.<br />
+            You can read my thoughts in <a href="https://twitter.com/crioto">Twitter</a>
+        </p>
 
-{% include pagination.html %}
+        <h2>Contact Information</h2>
+        <p>
+            Email: m<span>savochk</span>in<span>@g</span>mai<span>l.com</span><br />
+            GPG: 
+            <code>
+                <small><br />
+                    -----BEGIN PGP PUBLIC KEY BLOCK-----<br />
+                    <br />
+                    mQENBF4sMVYBCACpJiqB+afdSY9qXI67GRLB9SEiUpx3kk8h4cI9Cc+zv312Gxhe<br />
+                    lipcPDt5/hS5Mr/yirvayWuosme+hAioCKeAFjd8+y24UPp8lRmrbNsbhmyx0AtG<br />
+                    C1U6mH8UiC6xkbK8XO/OlYFbamnhfLn14pc9wXPyiiJGGS1Rf1s64b7dIbSO8rBh<br />
+                    NBKWHevJcF/T8qG+XG+aeN5LREorLkkqrHkFgyg7i2+B8YtfxsRC7VNXJXW/2Ds6<br />
+                    lUiw6Lt+YE0nrzGwYnsY6kQSDvPgvBbHAZtZxNV0JyIwJdhLHBYW6ykqp/D13nxa<br />
+                    3CR6m2+7S6hNfcFglUwrj6+PB4ZOeoEVHxFTABEBAAG0M01pa2hhaWwgU2F2b2No<br />
+                    a2luIChNYWluIGtleSkgPG1zYXZvY2hraW5AZ21haWwuY29tPokBTgQTAQgAOBYh<br />
+                    BGIJw0rA5NFUnI6sGN/6BWcnH4EcBQJeLDFWAhsDBQsJCAcCBhUKCQgLAgQWAgMB<br />
+                    Ah4BAheAAAoJEN/6BWcnH4Ecg4MIAKPSqq9oVTwg4Ugl0xVbSZ6k1GlRAofYOuPn<br />
+                    e89SmQCrFPtUcH/anhyqTTOaH0emItzcleau2SRlmFNVHMi/PI/Gp4BWOTreoM9g<br />
+                    9kwa2onmAFDodawjvCjim/Sgr37CYj+x+RnCo6O+j3BGgpfJfgcQIQglzKfQy23H<br />
+                    UbTDUOupCYl60SQNP+YCjH1DHdaBpzLWF6dVdW4nkZ/78b3PFix6JzgOa0w4/Axh<br />
+                    4u+zcXRXNsNdhbp3lUYkj0FTVadcHTBI/twXtXzalRJ79GmaK2w0JoUMp6xVy0av<br />
+                    qLxj1IxnRT37tu5weCeY0asjDaT8LN7zE+V68d9+q9/I6fMUU/G5AQ0EXiwxVgEI<br />
+                    ALhJ+otjiRLs5NbAMVG8rCIFcZkZTHhIvKz20AOSfrCfDHO7eqrkC1Jqda6nm1IR<br />
+                    40Wt2G8tNPZ234a3ZLqSjYb7ze0b9uoed+xPVdvLPegI7gJEtwoG+g71/mEyYXRh<br />
+                    3h7mVKzT4pp+8ykDMcaUL/A6mepoPv8H9vjV7LUqfmeuvFid6IKM8rZpwRqRnWnk<br />
+                    0fy+0K7M7gjcxodLN0doLdqsdUE3A4DKAJkO2cSrn9GLf5ytSsqFAsJPBLxdm6l0<br />
+                    sPmkhEgBjavyidCcuheywfkqg8BDeWQspwnM78KkoutBDy+4eFqZQKFANlpA02EM<br />
+                    shyTlP0gUsJ6BZ7qtypavD0AEQEAAYkBNgQYAQgAIBYhBGIJw0rA5NFUnI6sGN/6<br />
+                    BWcnH4EcBQJeLDFWAhsMAAoJEN/6BWcnH4EcFcgH/2X7qrW0taHlorg/rqfuRx/t<br />
+                    Cn/JddNSJ80w1wtq1S3arNgmS6Rayh2mdvrjgHuXHlIGz2xZwtj0tZSKm5y/+Fbf<br />
+                    hurnDCCnhfTPuUgufcMleGpczvRib1xnh8G9HxulbeI7KpAlEpQoyc/d7MapU4nd<br />
+                    wPXclSpSs77o06qM7ls13c/U6xS50RTb8TIEaxYX+mCepzRDZNMi/JbCvFrWRDbh<br />
+                    287/lKG5SP9akdZdwgP4gzw35Dq+dJqQTWEN/A4LcUbjtsYxMK8j13mbZna/FieX<br />
+                    f7mU7zWc3dMshAGXcY0d7R1IWUYbba8tq/C/yadReNpH+VdVErkNV1GfJVfHm7o=<br />
+                    =nfPR<br />
+                    -----END PGP PUBLIC KEY BLOCK-----<br />
+                    <br />
+                </small>
+            </code>
+        </p>
+    </body>
